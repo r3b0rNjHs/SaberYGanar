@@ -55,7 +55,7 @@ function start() {
 
 const boxQuestions = document.querySelector('.questions');
 const btnSend      = document.querySelector('.btn');
-const btnNext      = document.querySelector('.btnNext');
+//const btnNext      = document.querySelector('.btnNext');
 const btnStart     = document.querySelector('.btnStart');
 const btnSave      = document.querySelector('.btnSave');
 let msg            = document.querySelector('.message');
@@ -117,8 +117,8 @@ function startTimer() {
     if (seconds == 20) {
         seconds = 0;
         paintQuestions();
-        totalPoints -=3
-        console.log(totalPoints)
+        totalPoints -=3;
+        console.log(totalPoints);
         printScoreUIRealTime()
     }
     enable();//Comprueba cada segundo si hay algún check seleccionado para habilitar el botón (cada segundo por el setInterval)
@@ -150,15 +150,15 @@ function readUserAnswer() {
     found = questionsWithAnswers.find(function(question) {
         const questionBox = document.querySelector('.questionBox');
         if (question.id == questionBox.id){
-            return question
+            return question;
         }
     });
     correctIncorrectAnswer(found, optionChecked)
 }
 
-function correctIncorrectAnswer(a, b){    
+function correctIncorrectAnswer(){
     if (found.answers[optionChecked.id].isCorrect == true){
-        console.log('BIEN')
+        console.log('BIEN');
         msg.innerHTML = `<h3> ¡Correcta! </h3>`;
         if (seconds <= 2) {
             totalPoints += 2;
@@ -167,11 +167,11 @@ function correctIncorrectAnswer(a, b){
             totalPoints += 1;
         }
         else {
-            totalPoints;
+            return totalPoints;
         }
     }
     else if (found.answers[optionChecked.id].isCorrect !== true) {
-        console.log('MAL')
+        console.log('MAL');
         msg.innerHTML = `<h3> ¡Incorrecta! </h3>`;
         if (seconds >= 11) {
             totalPoints -= 2;
@@ -180,8 +180,8 @@ function correctIncorrectAnswer(a, b){
             totalPoints -= 1;
         }
     }
-    printScoreUIRealTime()
-    console.log(totalPoints)
+    printScoreUIRealTime();
+    console.log(totalPoints);
     seconds = 0;
 }
 
@@ -209,7 +209,7 @@ let score = { //Se guardan los nombres y las puntuaciones de cada jugador
 
 function saveScoreAndName() {
     let name = document.querySelector('#inputNameId').value;
-    score.names.push(name);;
+    score.names.push(name);
     listNames = score.names;
         console.log(listNames);
     score.points.push(totalPoints);
@@ -218,7 +218,7 @@ function saveScoreAndName() {
     printScoreAndName(listNames, sumPoints)
 }
 
-function printScoreAndName(a,b) {
+function printScoreAndName() {
     let scoreList = document.querySelector('.list');
     let add = '';
     for (let i = 0;i < listNames.length; i++){
@@ -226,7 +226,7 @@ function printScoreAndName(a,b) {
         `<li class="eachBoxPlayer">
             ${listNames[i]} - <div class="actualPoints"> ${sumPoints[i]} puntos </div>
         </li>`;
-    };
+    }
     scoreList.innerHTML= add;
 }
 
@@ -241,13 +241,13 @@ function stopTimer(){
 
 function resetTimeAndPoints(){
     totalPoints = 0;
-    printScoreUIRealTime()
+    printScoreUIRealTime();
     stopTimer();
     timer.innerHTML = '';
 }
 
 function cleanButtonsAndBoxes(){
-    let name = document.querySelector('#inputNameId').value = '';
+ //   let name = document.querySelector('#inputNameId').value = '';
     btnStart.classList.toggle('invisible');
     btnSend.classList.toggle('invisible');
     boxQuestions.classList.add('invisible');

@@ -44,7 +44,7 @@ describe('winner"s calculation', function () {
             }
         }
         return winners;
-    }
+    };
 
     it("checks that the winning user is the one with most points", function () {
         expect(calculateWinner(players)).toEqual([{ name: "Laura", points: 33 }]);
@@ -86,12 +86,12 @@ describe('winner"s calculation', function () {
 
 
 describe('calculo de marcador', function () {
-    function recalcularMarcadorEsCorreta(puntos, tiempo) {
+    function recalcularMarcadorEsCorrecta(puntos, tiempo) {
         switch (true) {
             case tiempo <= 2: return puntos + 2;
             case tiempo <= 10: return puntos + 1;
             case tiempo > 10: return puntos;
-            default: ;
+            default:
         }
     }
     function recalcularMarcadorEsIncorrecta(puntos, tiempo) {
@@ -99,7 +99,7 @@ describe('calculo de marcador', function () {
             case tiempo > 20: return puntos - 3;
             case tiempo > 10: return puntos - 2;
             case tiempo <= 20: return puntos - 1;
-            default: ;
+            default:
         }
     }
     function recalcularMarcadorSinRespuesta(puntos) {
@@ -107,16 +107,16 @@ describe('calculo de marcador', function () {
     }
 
     it("suma más puntos si acierta muy rápido", function () {
-        expect(recalcularMarcadorEsCorreta(0, 1)).toBe(2);
-        expect(recalcularMarcadorEsCorreta(2, 1)).toBe(4);
+        expect(recalcularMarcadorEsCorrecta(0, 1)).toBe(2);
+        expect(recalcularMarcadorEsCorrecta(2, 1)).toBe(4);
     });
     it("suma punto si acierta rápido", function () {
-        expect(recalcularMarcadorEsCorreta(1, 5)).toBe(2);
-        expect(recalcularMarcadorEsCorreta(1, 3)).toBe(2);
+        expect(recalcularMarcadorEsCorrecta(1, 5)).toBe(2);
+        expect(recalcularMarcadorEsCorrecta(1, 3)).toBe(2);
     });
     it("no suma puntos si acierto muy lento", function () {
-        expect(recalcularMarcadorEsCorreta(1, 11)).toBe(1);
-        expect(recalcularMarcadorEsCorreta(5, 18)).toBe(5);
+        expect(recalcularMarcadorEsCorrecta(1, 11)).toBe(1);
+        expect(recalcularMarcadorEsCorrecta(5, 18)).toBe(5);
     });
     it("resta más puntos si fallo muy lento", function () {
         expect(recalcularMarcadorEsIncorrecta(2, 11)).toBe(0);
@@ -200,8 +200,8 @@ describe("array preguntas", function () {
             { id: 2, answer: "Oporto", isCorrect: false, idQuestion: 6 },
             { id: 3, answer: "Ciudad de Panamá", isCorrect: true, idQuestion: 6 }
         ]
-    }
-    ]
+    }];
+
 
 
     function dosetTimeout(i) {
