@@ -114,7 +114,7 @@ function paintQuestions() {
 function startTimer() {
     seconds++;
     timer.innerHTML= `${seconds}`;
-    if (seconds == 20) {
+    if (seconds === 20) {
         seconds = 0;
         paintQuestions();
         totalPoints -=3;
@@ -149,7 +149,7 @@ function readUserAnswer() {
     }
     found = questionsWithAnswers.find(function(question) {
         const questionBox = document.querySelector('.questionBox');
-        if (question.id == questionBox.id){
+        if (question.id === questionBox.id){
             return question;
         }
     });
@@ -157,7 +157,7 @@ function readUserAnswer() {
 }
 
 function correctIncorrectAnswer(){
-    if (found.answers[optionChecked.id].isCorrect == true){
+    if (found.answers[optionChecked.id].isCorrect === true){
         console.log('BIEN');
         msg.innerHTML = `<h3> ¡Correcta! </h3>`;
         if (seconds <= 2) {
